@@ -39,9 +39,20 @@ func installDependency(config *configuration.Configuration, noSave bool) error {
 		return err
 	}
 	bossJSON := filepath.Join(currentDir, "boss.json")
-	_, err = models.LoadPackage(bossJSON)
+	pkg, err := models.LoadPackage(bossJSON)
 	if err != nil {
 		return err
 	}
+	if config.Global {
+		return installGlobalDependency(config, pkg, noSave)
+	}
+	return installLocalDependency(config, pkg, noSave)
+}
+
+func installLocalDependency(config *configuration.Configuration, pkg *models.BossPackage, noSave bool) error {
+	return nil
+}
+
+func installGlobalDependency(config *configuration.Configuration, pkg *models.BossPackage, noSave bool) error {
 	return nil
 }

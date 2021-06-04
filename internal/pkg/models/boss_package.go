@@ -8,21 +8,21 @@ import (
 
 // BossPackage is a model of boss.json
 type BossPackage struct {
-	Name         string            `json:"name"`
-	Description  string            `json:"description"`
-	Version      string            `json:"version"`
-	Homepage     string            `json:"homepage"`
-	MainSrc      string            `json:"mainsrc"`
-	Projects     []string          `json:"projects"`
-	Scripts      map[string]string `json:"scripts,omitempty"`
-	Dependencies map[string]string `json:"dependencies"`
+	Name         string   `json:"name"`
+	Description  string   `json:"description"`
+	Version      string   `json:"version"`
+	Homepage     string   `json:"homepage"`
+	MainSrc      string   `json:"mainsrc"`
+	Projects     []string `json:"projects"`
+	Scripts      []string `json:"scripts"`
+	Dependencies []string `json:"dependencies"`
 }
 
 // MakeBossPackage create a new instance of BossPackage
 func MakeBossPackage() *BossPackage {
 	return &BossPackage{
-		Scripts:      make(map[string]string),
-		Dependencies: make(map[string]string),
+		Scripts:      []string{},
+		Dependencies: []string{},
 		Projects:     []string{},
 	}
 }
